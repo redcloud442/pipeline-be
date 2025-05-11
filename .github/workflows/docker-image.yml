@@ -1,0 +1,42 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    environment: Production
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build Docker image with envs
+        run: |
+          docker build -t ghcr.io/redcloud442/pipeline:prod .
+
+      - name: Verify Docker login
+        run: docker info
+
+      - name: Verify image tagging
+        run: docker images
+
+      - name: Push Docker image
+        run: |
+          docker push ghcr.io/redcloud442/pipeline:prod
