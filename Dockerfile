@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
   gnupg \
   dos2unix \
   unzip \
+  docker.io \
   && rm -rf /var/lib/apt/lists/*
 
 # Install Bun

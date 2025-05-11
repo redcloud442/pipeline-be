@@ -39,8 +39,17 @@ const deployHandler = (service: string) => {
 
 app.get('/', (c) => c.text('Pipeline API!'))
 
-app.post('/deploy/backend/:service', authenticate, deployHandler(':service'))
-app.post('/deploy/frontend/:service', authenticate, deployHandler(':service'))
+app.post('/deploy/backend/:service', authenticate, async (c) => {
+  const service = c.req.param('service')
+  return deployHandler(service)(c)
+})
 
+app.post('/deploy/frontend/:service', authenticate, async (c) => {
+  const service = c.req.param('service')
+  return deployHandler(service)(c)
+})
 
-export default app
+export default {
+  port: 8080,
+  fetch: app.fetch,
+};
