@@ -58,7 +58,6 @@ RUN addgroup --system --gid 1001 nodejs && \
 COPY --from=builder --chown=redcloud:nodejs /app/node_modules ./node_modules
 COPY --from=builder --chown=redcloud:nodejs /app/dist ./dist
 COPY --from=builder --chown=redcloud:nodejs /app/package.json ./package.json
-COPY --from=builder --chown=redcloud:nodejs /app/prisma ./prisma
 
 # Copy and prepare entrypoint script
 COPY scripts/entrypoint_overwrited.sh /app/entrypoint.sh
