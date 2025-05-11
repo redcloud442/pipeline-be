@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "bun run --hot src/index.ts",
     "build": "tsc",
-    "start": "NODE_ENV=production bun run dist/index.js"
+    "start": "NODE_ENV=production bun run dist/index.js",
+    "prod": "NODE_ENV=production bun run /app/dist/index.js"
   },
   "dependencies": {
     "hono": "^4.7.9",
