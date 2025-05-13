@@ -4,7 +4,7 @@
     "dev": "bun run --hot src/index.ts --port 8080",
     "build": "tsc",
     "start": "NODE_ENV=production bun run dist/index.js --port 8080",
-    "prod": "NODE_ENV=production bun run /app/dist/index.js --port 8080"
+    "prod": "NODE_ENV=production bun run /app/dist/index.js"
   },
   "dependencies": {
     "hono": "^4.7.9",

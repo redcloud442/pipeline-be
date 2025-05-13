@@ -71,8 +71,8 @@ RUN chown -R redcloud:nodejs /app
 USER redcloud
 
 # Set environment variables and expose port
-ENV PORT=3000
-EXPOSE 3000
+ENV PORT=8000
+EXPOSE 8000
 
 # Entrypoint and default command
 ENTRYPOINT ["/app/entrypoint.sh"]
